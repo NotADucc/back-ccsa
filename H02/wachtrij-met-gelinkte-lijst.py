@@ -1,4 +1,5 @@
 class QueueList:
+    
     class Knoop:
         def __init__(self, data=None, volgende=None):
             self.data = data
@@ -12,7 +13,7 @@ class QueueList:
         return self.head is None
 
     def enqueue(self, data):
-        if self.head is None :
+        if self.empty() :
             self.head = self.Knoop(data)
             self.tail = self.head
         else :
@@ -25,18 +26,16 @@ class QueueList:
     def dequeue(self):
         val = self.head.data
         self.head = self.head.volgende
+        if self.empty() :
+            self.tail = None
         return val
         
     def invert(self) :
         head = self.head
         prev = None
-        tail = None
         while head is not None :
             temp = head.volgende
             head.volgende = prev
-            if tail is None :
-                tail = head
             prev = head
             head = temp
-        self.head = prev
-        self.tail = tail
+        self.head, self.tail = self.tail, self.head

@@ -4,10 +4,20 @@
 
 # print(1.63498390018)
 # print(100)
+from math import pi
+def help(total) :
+    s = 0
+    for i in range(1, total + 1) :
+        s += (1 / (i ** 2))
+    return s
 
-s = 0
-for i in range(1, 101) :
-    s += (1 / (i ** 2))
+print(help(100))
 
-print(s)
-print(100)
+j = 1
+
+waarde = abs(help(j) - pow(pi, 2) / 6)
+while waarde > 1 / 100:
+    j += 1
+    waarde = abs(help(j) - pow(pi, 2) / 6)
+
+print(j)
